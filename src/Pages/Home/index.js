@@ -98,7 +98,7 @@ const Home = () => {
                     type="text"
                     id="m-search"
                     className="form-control"
-                    placeholder="Search bug title. . ."
+                    placeholder="Search task title and click enter"
                     onChange={(e) => searchText(e)}
                     value={query}
                     onKeyDown={(e) => {
@@ -135,69 +135,7 @@ const Home = () => {
         </div>
 
         {<BugCompleted bugsData={bugsData} />}
-        <div className="col-xl-8 col-md-12 m-b-30">
-          <ul className="nav nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="contact-tab"
-                data-toggle="tab"
-                href="#contact"
-                role="tab"
-                aria-controls="contact"
-                aria-selected="false"
-              >
-                All Bugs Reported
-              </a>
-            </li>
-          </ul>
-          <div
-            className="tab-content"
-            id="myTabContent"
-            style={{ padding: "0px 10px" }}
-          >
-            <div
-              className="tab-pane fade active show"
-              id="profile"
-              role="tabpanel"
-              aria-labelledby="profile-tab"
-            >
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Activity</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th className="text-right"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bugsData.map((item) => (
-                    <tr>
-                      <td>
-                        <h6 className="m-0">{item.assignedTo}</h6>
-                      </td>
-                      <td>
-                        <h6 className="m-0">{item.title}</h6>
-                      </td>
-                      <td>
-                        <h6 className="m-0">{item.reportedDate}</h6>
-                      </td>
-                      <td>
-                        <h6 className={`m-0 ${getStatusColor(item.status)}`}>{item.status}</h6>
-                      </td>
-                      <td className="text-right">
-                        <i className= {`fas fa-circle  f-10 ${getStatusColor(item.status)}`}></i>
-                       
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+      
         
       </div>
     </>

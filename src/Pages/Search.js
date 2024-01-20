@@ -60,17 +60,7 @@ const Search = () => {
                 display: "flex",
               }}
             >
-              <h5>Searched Bugs</h5>
-              <button
-                style={{
-                  backgroundColor: "#008021",
-                  padding: 10,
-                  color: "white",
-                }}
-                onClick={() => navigate("/bugs_add")}
-              >
-                Time Log 
-              </button>
+              <h5>Searched Task</h5>
             </div>
 
             <div className="card-block table-border-style">
@@ -119,7 +109,7 @@ const Search = () => {
                           <td style={{ textAlign: "center" }}>
                             <i
                               onClick={() =>
-                                navigate("/bugs_edit", {
+                                navigate("/tasks_edit", {
                                   state: {
                                     editItem: item,
                                   },

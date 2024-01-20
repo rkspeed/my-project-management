@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
-import API from "./../../API";
+import { useNavigate } from "react-router-dom";
 import { db } from "./../../Database/Firebase";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
-const Bugs = () => {
+const Tasks = () => {
   const navigate = useNavigate();
   const [bugsData, setBugsData] = useState([]);
   const [bugsDataTemp, setBugsDataTemp] = useState([]);
@@ -70,14 +58,14 @@ const Bugs = () => {
                 display: "flex",
               }}
             >
-              <h5>Bugs</h5>
+              <h5>Tasks</h5>
               <button
                 style={{
                   backgroundColor: "#008021",
                   padding: 10,
                   color: "white",
                 }}
-                onClick={() => navigate("/bugs_add")}
+                onClick={() => navigate("/tasks_add")}
               >
                 Add +
               </button>
@@ -88,9 +76,16 @@ const Bugs = () => {
                 <table className="table table-striped">
                   <thead>
                     <tr>
-                      <th style={{ textAlign: "center" }}></th>
-
                       <th style={{ textAlign: "center" }}>
+                        <h1
+                          style={{
+                            textAlign: "center",
+                            marginTop: 10,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Select Project
+                        </h1>
                         <select
                           name="cars"
                           id="cars"
@@ -105,23 +100,20 @@ const Bugs = () => {
                         </select>
                       </th>
                       <th style={{ textAlign: "center" }}></th>
-                      <th style={{ textAlign: "center" }}></th>
-                      <th style={{ textAlign: "center" }}></th>
-                      <th style={{ textAlign: "center" }}></th>
-                      <th style={{ textAlign: "center" }}></th>
-                      <th style={{ textAlign: "center" }}>
-                        {" "}
+
+                      <th>
+                        <h1 style={{ marginTop: 10, marginBottom: 10 }}>
+                          Select Status
+                        </h1>
+
                         <select
                           name="cars"
                           id="cars"
                           className="form-control"
                           onChange={(e) => selectStatusData(e.target.value)}
-                          style={{width:'auto'}}
-                        
+                          style={{ width: "auto" }}
                         >
-                          <option value="all" >
-                            Select All
-                          </option>
+                          <option value="all">Select All</option>
 
                           <option value="Pending">Pending</option>
                           <option value="Inprogress">Inprogress</option>
@@ -151,11 +143,9 @@ const Bugs = () => {
                       bugsDataTemp.map((item, index) => (
                         <tr key={index}>
                           <th scope="row">{index + 1}</th>
-                          <td style={{ textAlign: "center" }}   onClick={() => navigate("/view_bug",{
-                            state: {
-                              editItem: item,
-                            },
-                          })}>
+                          <td
+                            style={{ textAlign: "center" }}
+                          >
                             {item.project}
                           </td>
                           <td style={{ textAlign: "center" }}>{item.title}</td>
@@ -178,7 +168,7 @@ const Bugs = () => {
                           <td style={{ textAlign: "center" }}>
                             <i
                               onClick={() =>
-                                navigate("/bugs_edit", {
+                                navigate("/tasks_edit", {
                                   state: {
                                     editItem: item,
                                   },
@@ -201,4 +191,4 @@ const Bugs = () => {
   );
 };
 
-export default Bugs;
+export default Tasks;

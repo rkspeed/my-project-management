@@ -19,11 +19,11 @@ import AddProjects from "./Pages/Projects/AddProjects";
 import EditProjects from "./Pages/Projects/EditProjects";
 import Projects from './Pages/Projects';
 
-import AddTasks from "./Pages/Bugs/AddTasks";
-import Bugs from "./Pages/Bugs";
-import EditBugs from "./Pages/Bugs/EditBugs";
+import AddTasks from "./Pages/Tasks/AddTasks";
+import Tasks from "./Pages/Tasks";
+import EditTasks from "./Pages/Tasks/EditTasks";
 
-import ViewSingleBugDeatils from "./Pages/Bugs/ViewSingleBugDetails";
+import ViewSingleTasksDeatils from "./Pages/Tasks/ViewSingleTasksDetails";
 
 import Teams from "./Pages/Teams";
 import AddTeams from "./Pages/Teams/AddTeams";
@@ -41,20 +41,7 @@ import { DashboardLayout } from "./Components/Layout";
 import MemberDashboard from "./Pages/Home/MemberDashboard"
 
 const Root = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate();
-  
-  useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
-    if (user) {
-    
-    } else {
-      // navigate("/Login");
-    }
-  }, [user, loading]);
+
 
   return (
     <div>
@@ -69,12 +56,11 @@ const Root = () => {
         <Route path="/projects_add" element={<AddProjects />} />
         <Route path="/projects_edit" element={<EditProjects />} />
 
-        {/* bugs routes */}
-        <Route path="/bugs" element={<Bugs />} />
-        <Route path="/bugs_view" element={<Bugs />} />
-        <Route path="/bugs_view_single" element={<ViewSingleBugDeatils />} />
-        <Route path="/bugs_add" element={<AddTasks />} />
-        <Route path="/bugs_edit" element={<EditBugs />} />
+        {/* tasks routes */}
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks_view" element={<Tasks />} />
+        <Route path="/tasks_add" element={<AddTasks />} />
+        <Route path="/tasks_edit" element={<EditTasks />} />
         {/* Temas routes */}
         <Route path="/teams" element={<Teams />} />
         <Route path="/teams_view" element={<Teams />} />
@@ -86,7 +72,6 @@ const Root = () => {
 
         <Route path="/member_dashboard" element={<MemberDashboard />} />
         <Route path="/change_bug_status" element={<ChangeStatus />} />
-        <Route path="/view_bug" element={<ViewSingleBugDeatils />} />
       </Routes>
       </div>
     </div>

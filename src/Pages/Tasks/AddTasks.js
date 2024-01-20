@@ -16,7 +16,7 @@ import {
   getProjectList,
 } from "../../CommonFunstion";
 
-const AddBugs = () => {
+const AddTasks = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [project, setProject] = useState("select");
@@ -89,7 +89,7 @@ const AddBugs = () => {
               <div className="col-md-6" style={{ marginTop: 80 }}>
                 <div className="card">
                   <div className="card-header">
-                    <h5>Add Bug</h5>
+                    <h5>Add Task</h5>
                   </div>
                   <div className="card-body">
                     <div className="row">
@@ -115,7 +115,7 @@ const AddBugs = () => {
                           
                         </div>
                         <div className="form-group">
-                          <label for="exampleInputEmail1">Issue Title </label>
+                          <label for="exampleInputEmail1">Task Title </label>
                           <input
                             type="email"
                             className="form-control"
@@ -128,7 +128,7 @@ const AddBugs = () => {
                         </div>
                         <div className="form-group">
                           <label for="exampleInputEmail1">
-                            Issue Description
+                            Task Description
                           </label>
                           <input
                             type="email"
@@ -231,4 +231,4 @@ const AddBugs = () => {
   );
 };
 
-export default AddBugs;
+export default AddTasks;

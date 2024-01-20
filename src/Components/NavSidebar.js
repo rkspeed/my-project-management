@@ -54,26 +54,26 @@ const NavSidebar = () => {
                 data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
                 className="nav-item pcoded-hasmenu"
               >
-                <a href="/bugs" className="nav-link ">
+                <a href="/tasks" className="nav-link ">
                   <span className="pcoded-micon">
                     <i className="feather icon-box"></i>
                   </span>
-                  <span className="pcoded-mtext">Bugs</span>
+                  <span className="pcoded-mtext">Tasks</span>
                 </a>
                 <ul className="pcoded-submenu">
                   <li className="">
-                    <a href="/bugs_view" className="">
-                      View bugs
+                    <a href="/tasks_view" className="">
+                      View tasks
                     </a>
                   </li>
                   <li className="">
-                    <a href="/bugs_add" className="">
-                      Add bugs
+                    <a href="/tasks_add" className="">
+                      Add tasks
                     </a>
                   </li>
                   <li className="">
                     <a href="/change_bug_status" className="">
-                      Change bugs status
+                      Change tasks status
                     </a>
                   </li>
                 </ul>

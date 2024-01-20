@@ -6,14 +6,9 @@ import {
   collection,
   addDoc,
   getDocs,
-  Timestamp,
-  query,
-  orderBy,
-  onSnapshot,
-  where,
 } from "firebase/firestore";
 
-const ViewSingleBugDeatils = () => {
+const ViewSingleTasksDeatils = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let editItem = location.state?.editItem;
@@ -172,4 +167,4 @@ const ViewSingleBugDeatils = () => {
   );
 };
 
-export default ViewSingleBugDeatils;
+export default ViewSingleTasksDeatils;
