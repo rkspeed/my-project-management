@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import API from "./../../API";
+import API from "../../API";
 import {
   EmailValidation,
   ArrayValidation,
   EmptyValidation,
-} from "./../../Validation/InputValidation";
-import { db, storage } from "./../../Database/Firebase";
-
-import { doc, updateDoc,addDoc } from "firebase/firestore";
+} from "../../Validation/InputValidation";
+import { db, storage } from "../../Database/Firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import {
   getUserList,
   getBugsList,
   getProjectList,
-} from "./../../CommonFunstion";
+} from "../../CommonFunstion";
 
-const EditBugs = () => {
+const AddBugs = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  let editItem = location.state?.editItem;
   const [project, setProject] = useState("select");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -29,8 +27,6 @@ const EditBugs = () => {
   const [assignedTo, setAssignedTo] = useState("");
   const [uploads, setUploads] = useState("");
   const [storageRef, setStorageRef] = useState("");
-  const [editId, setEditId] = useState("");
-  const [status, setStatus] = useState("Pending");
   const [userData, setUserData] = useState([]);
   const [projectData, setProjectData] = useState([]);
 
@@ -38,21 +34,6 @@ const EditBugs = () => {
     getUsers();
     getProject();
   }, []);
-
-
-  useEffect(() => {
-    if (editItem) {
-      setEditId(editItem.id);
-      setProject(editItem.project);
-      setTitle(editItem.title);
-      setDescription(editItem.description);
-      setReportedDate(editItem.reportedDate);
-      setReportedBy(editItem.reportedBy);
-      setAssignedTo(editItem.assignedTo)
-      setStorageRef(editItem.uploads);
-   
-    }
-  }, [editItem]);
 
   const getUsers = async () => {
     const data = await getUserList();
@@ -66,8 +47,6 @@ const EditBugs = () => {
 
   const handleSubmit = async () => {
     try {
-     
-
       const data = {
         project: project,
         title: title,
@@ -75,18 +54,14 @@ const EditBugs = () => {
         reportedBy: reportedBy,
         reportedDate: reportedDate,
         uploads: storageRef,
-        assignedTo:assignedTo,
-        status:status
+        assignedTo: assignedTo,
+        status: "Pending",
       };
-      console.log(data)
-      const taskDocRef = doc(db, "bugs", editId);
-      try {
-        await updateDoc(taskDocRef, data);
-        alert("Data saved successfully!");
-        navigate("/bugs");
-      } catch (err) {
-        alert(err);
-      }
+      console.log(data);
+      await addDoc(collection(db, "bugs"), data);
+
+      alert("success");
+      navigate("/bugs");
     } catch (err) {
       alert(err);
     }
@@ -97,14 +72,12 @@ const EditBugs = () => {
   };
   const handleChangeImage = async (e) => {
     setUploads(e.target.value);
-    //uplaod image to the firebase storage
-      const img = e.target.files[0];
-      const storageRef = ref(storage, `files/${img.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, img);
-      const ImageURL = await getDownloadURL(ref(storage, `files/${img.name}`));
-      console.log(storageRef)
-      setStorageRef(ImageURL);
-    
+    const img = e.target.files[0];
+    const storageRef = ref(storage, `files/${img.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, img);
+
+    const ImageURL = await getDownloadURL(ref(storage, `files/${img.name}`));
+    setStorageRef(ImageURL);
   };
   return (
     <div>
@@ -116,7 +89,7 @@ const EditBugs = () => {
               <div className="col-md-6" style={{ marginTop: 80 }}>
                 <div className="card">
                   <div className="card-header">
-                    <h5>Edit Bug</h5>
+                    <h5>Add Bug</h5>
                   </div>
                   <div className="card-body">
                     <div className="row">
@@ -124,7 +97,7 @@ const EditBugs = () => {
                         <div className="form-group">
                           <label for="cars">Select Project</label>
 
-                        
+                         
                           <select
                             name="cars"
                             id="cars"
@@ -138,6 +111,8 @@ const EditBugs = () => {
                               <option value={i.project_name}>{i.project_name}</option>
                             ))}
                           </select>
+
+                          
                         </div>
                         <div className="form-group">
                           <label for="exampleInputEmail1">Issue Title </label>
@@ -192,11 +167,20 @@ const EditBugs = () => {
                               <option value={i.email}>{i.email}</option>
                             ))}
                           </select>
-                         
+                          {/* <input
+                            type="text"
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter Reported by"
+                            onChange={(e) => setReportedBy(e.target.value)}
+                            value={reportedBy}
+                          /> */}
                         </div>
                         <div className="form-group">
                           <label for="exampleInputEmail1">Assigned To</label>
-                          <select
+                        
+                           <select
                             name="cars"
                             id="cars"
                             className="form-control"
@@ -210,7 +194,7 @@ const EditBugs = () => {
                             ))}
                           </select>
                         </div>
-                        
+
                         <div className="form-group">
                           <label for="exampleInputEmail1">
                             Releated Screenshots
@@ -231,7 +215,7 @@ const EditBugs = () => {
                           className="btn btn-primary"
                           onClick={() => handleSubmit()}
                         >
-                          Update
+                          Add
                         </button>
                       </div>
                     </div>
@@ -247,4 +231,4 @@ const EditBugs = () => {
   );
 };
 
-export default EditBugs;
+export default AddBugs;

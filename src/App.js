@@ -19,7 +19,7 @@ import AddProjects from "./Pages/Projects/AddProjects";
 import EditProjects from "./Pages/Projects/EditProjects";
 import Projects from './Pages/Projects';
 
-import AddBugs from "./Pages/Bugs/AddBugs";
+import AddTasks from "./Pages/Bugs/AddTasks";
 import Bugs from "./Pages/Bugs";
 import EditBugs from "./Pages/Bugs/EditBugs";
 
@@ -59,7 +59,7 @@ const Root = () => {
   return (
     <div>
      <DashboardLayout/>
-      <div style={{marginLeft: user?261:10}}>
+     <div style={{marginLeft:261}}>
       <Routes >
         <Route exact path="/" element={<Home />} />
       
@@ -73,7 +73,7 @@ const Root = () => {
         <Route path="/bugs" element={<Bugs />} />
         <Route path="/bugs_view" element={<Bugs />} />
         <Route path="/bugs_view_single" element={<ViewSingleBugDeatils />} />
-        <Route path="/bugs_add" element={<AddBugs />} />
+        <Route path="/bugs_add" element={<AddTasks />} />
         <Route path="/bugs_edit" element={<EditBugs />} />
         {/* Temas routes */}
         <Route path="/teams" element={<Teams />} />

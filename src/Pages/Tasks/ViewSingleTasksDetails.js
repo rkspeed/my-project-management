@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { db, storage, auth } from "./../../Database/Firebase";
+import { db, storage, auth } from "../../Database/Firebase";
 
 import {
   collection,
@@ -50,7 +50,6 @@ const ViewSingleBugDeatils = () => {
       user: doc.data().user,
       bug_id: doc.data().bug_id,
     }));
-    console.log(data,editId);
     setComment(data.filter((i) => i.bug_id == editId));
   };
   const postComment = async () => {

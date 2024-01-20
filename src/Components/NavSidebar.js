@@ -10,7 +10,7 @@ const NavSidebar = () => {
               <div className="b-bg">
                 <i className="feather icon-trending-up"></i>
               </div>
-              <span className="b-title">Deffect Management</span>
+              <span className="b-title">Project Management</span>
             </a>
           </div>
           <div className="navbar-content scroll-div">
