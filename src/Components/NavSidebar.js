@@ -72,7 +72,7 @@ const NavSidebar = () => {
                     </a>
                   </li>
                   <li className="">
-                    <a href="/change_bug_status" className="">
+                    <a href="/change_task_status" className="">
                       Change tasks status
                     </a>
                   </li>

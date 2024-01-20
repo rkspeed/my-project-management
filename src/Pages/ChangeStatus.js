@@ -98,7 +98,7 @@ const ChangeStatus = () => {
                 display: "flex",
               }}
             >
-              <h5>Bug List</h5>
+              <h5>Task List</h5>
             </div>
 
             <div className="card-block table-border-style">

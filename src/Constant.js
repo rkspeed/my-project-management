@@ -9,15 +9,15 @@ export const Privillages = [
     },
     {
       id: 3,
-      text: " Add Bug ",
+      text: " Add Task ",
     },
     {
       id: 4,
-      text: "  Delete  Bug",
+      text: "  Delete  Task",
     },
     {
       id: 5,
-      text: " Assign Bug ",
+      text: " Assign Task ",
     },
     {
       id: 6,

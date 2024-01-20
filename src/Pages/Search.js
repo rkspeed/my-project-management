@@ -69,7 +69,6 @@ const Search = () => {
                   <thead>
                     <tr>
                       <th style={{ textAlign: "center" }}>#</th>
-
                       <th style={{ textAlign: "center" }}>Project Name</th>
                       <th style={{ textAlign: "center" }}>Title</th>
                       <th style={{ textAlign: "center" }}>Description</th>

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { PieChart } from "react-minimal-pie-chart";
-const BugCompleted = ({bugsData}) => {
+const TaskCompleted = ({bugsData}) => {
     const [completed, setBugsData] = useState(0);
    
     useEffect(()=>{
@@ -16,14 +16,14 @@ const BugCompleted = ({bugsData}) => {
           <div
             style={{ width: 10, height: 10, backgroundColor: "#cf1616" ,marginTop:8,marginRight:10}}
           ></div>
-          Reported Bug : {bugsData.length}
+          Reported Tasks : {bugsData.length}
         </span>
         <br />
         <span style={{ display: "inline-flex" }}>
           <div
             style={{ width: 10, height: 10, backgroundColor: "#146a04" ,marginTop:8,marginRight:10}}
           ></div>
-          Fixed Bug : {completed}
+          Fixed Tasks : {completed}
         </span>
         <br />
       </div>
@@ -39,4 +39,4 @@ const BugCompleted = ({bugsData}) => {
   );
 };
 
-export default BugCompleted;
+export default TaskCompleted;

@@ -14,8 +14,8 @@ import {
   onSnapshot,
   getDocs,
 } from "firebase/firestore";
-import GetBugRate from "./GetBugRate";
-import BugCompleted from "./BugCompleted";
+import GetTaskRate from "./GetTaskRate";
+import TaskCompleted from "./TaskCompleted";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -125,16 +125,16 @@ const Home = () => {
               float: "right",
               marginRight: 48,
             }}
-            onClick={() => navigate("/change_bug_status")}
+            onClick={() => navigate("/change_task_status")}
           >
-            Change Bug Status 
+            Change Task Status 
           </button>
         </div>
         <div>
-          {<GetBugRate bugsData={bugsData} projectsData={projectsData} textValue1="Bug" textValue2="Project"/>}
+          {<GetTaskRate bugsData={bugsData} projectsData={projectsData} textValue1="Task" textValue2="Project"/>}
         </div>
 
-        {<BugCompleted bugsData={bugsData} />}
+        {<TaskCompleted bugsData={bugsData} />}
       
         
       </div>

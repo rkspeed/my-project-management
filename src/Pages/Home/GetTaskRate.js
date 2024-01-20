@@ -1,4 +1,4 @@
-const GetBugRate = ({ bugsData,projectsData,textValue1,textValue2 }) => {
+const GetTaskRate = ({ bugsData,projectsData,textValue1,textValue2 }) => {
   return (
     <div className="pcoded-main-container" style={{ marginLeft: 0,minHeight:10 }}>
       <div className="pcoded-wrapper">
@@ -49,4 +49,4 @@ const GetBugRate = ({ bugsData,projectsData,textValue1,textValue2 }) => {
   );
 };
 
-export default GetBugRate;
+export default GetTaskRate;
