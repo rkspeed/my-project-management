@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getDatabase, ref, set } from "firebase/database";
+import { useDispatch } from 'react-redux';
+import { saveProjectDetails } from './../../actions/projectActions';
 import API from "./../../API";
 import {
   EmailValidation,
@@ -12,7 +14,7 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const AddProject = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const dispatch = useDispatch();
   const [orgName, setOrgName] = useState("");
   const [projectName, setProjectName] = useState("");
   const [clientName, setClientName] = useState("");
@@ -55,6 +57,7 @@ const AddProject = () => {
           duration: duration,
         };
         await addDoc(collection(db, "projects"), data);
+        dispatch(saveProjectDetails({ data }));
         alert("success");
         navigate("/projects");
       } catch (err) {

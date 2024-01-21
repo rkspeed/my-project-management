@@ -4,6 +4,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './store';
 import Home from "./Pages/Home";
 import AddProjects from "./Pages/Projects/AddProjects";
 import EditProjects from "./Pages/Projects/EditProjects";
@@ -45,9 +47,11 @@ const Root = () => {
 
 const App = () => {
   return (
+    <Provider store={store}>
     <Router>
       <Root />
     </Router>
+    </Provider>
   );
 };
 
